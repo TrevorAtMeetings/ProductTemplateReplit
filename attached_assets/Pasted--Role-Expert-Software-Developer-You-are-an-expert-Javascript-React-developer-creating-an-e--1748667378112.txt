@@ -1,0 +1,103 @@
+# Role: Expert Software Developer 🧑‍💻
+
+You are an expert Javascript/React developer creating an e-commerce full-stack web app.
+Your primary focus is to build software for the user.
+
+## AI Code Generation Task:
+
+Generate a full-stack e-commerce web application with a separate frontend and backend, designed for potential deployment on separate servers. Implement Cross-Origin Resource Sharing (CORS) to allow communication between the frontend and backend.
+
+---
+
+### **Frontend (React.js & Material UI):** 🎨
+
+1.  **Technology Stack:**
+    * Use **React.js** for the frontend framework.
+    * Utilize **Material UI** as the primary styling library.
+2.  **Styling:**
+    * Apply a consistent **light grey/blue color scheme** across all created pages.
+    * Ensure all pages and components are appropriately styled for a professional look and feel.
+3.  **Authentication Pages:** 🔑
+    * Create a **Signup Page**:
+        * Inputs for user credentials (e.g., username/email, password).
+        * On submission, securely send user data to a backend API endpoint for registration.
+    * Create a **Login Page**:
+        * Inputs for user credentials.
+        * On submission, authenticate the user via a backend API endpoint.
+        * Implement token-based authentication (e.g., JWT). Store the token securely on the client-side upon successful login.
+4.  **Products Page (Authenticated Access Only):** 🛍️
+    * This page should **only be accessible after a user has successfully logged in**. Redirect unauthenticated users to the login page.
+    * Display products with the following details:
+        * **Name** (Text)
+        * **Description** (Text)
+        * **Price** (Numeric/Currency)
+        * **Quantity** (Numeric)
+    * **Product Management Features:**
+        * **Search Functionality:** Implement a search bar allowing users to search for products stored in the PostgreSQL database (via a backend API call).
+        * **Add Product:** Provide a form or modal to add a new product (Name, Description, Price, Quantity). This action should call a backend API to save the new product to the database.
+        * **Remove Product:** Allow users to remove existing products. This action should call a backend API to delete the product from the database.
+        * **Edit Product:** Enable users to modify the details of existing products. This action should call a backend API to update the product in the database.
+5.  **Navigation:** 🧭
+    * Implement a clear navigation menu (e.g., a Navbar).
+    * **Conditionally render menu items**:
+        * Show "Signup" and "Login" links when the user is not authenticated.
+        * Show "Products" and "Logout" links when the user is authenticated.
+        * Ensure all product management functionalities (Search, Add, ability to see Edit/Remove options per product) are accessible from the "Products" page.
+
+---
+
+### **Backend (Node.js & PostgreSQL):** ⚙️
+
+1.  **Technology Stack:**
+    * Use **Node.js** as the backend runtime environment.
+    * Use **Express.js** (or a similar framework like Koa or Fastify) for routing and API endpoint creation.
+2.  **Database:** 💾
+    * Connect to a **PostgreSQL** server.
+    * Create necessary tables for:
+        * **Users**: Store user information (e.g., id, username/email, hashed_password).
+        * **Products**: Store product details (e.g., id, name, description, price, quantity).
+3.  **API Endpoints:** 🔗
+    * **Authentication:**
+        * `POST /api/auth/signup`: Register a new user. Hash passwords before storing.
+        * `POST /api/auth/login`: Authenticate an existing user. Return a JWT upon success.
+    * **Products (Protected - require authentication):**
+        * `GET /api/products`: Fetch all products or search/filter products.
+        * `POST /api/products`: Add a new product.
+        * `PUT /api/products/:id`: Update an existing product by its ID.
+        * `DELETE /api/products/:id`: Remove a product by its ID.
+4.  **Environment Configuration:** 📝
+    * Create a `.env` file for managing environment variables. Based on the following Docker Compose service definition for PostgreSQL, ensure the backend can connect using these (or similarly named) variables:
+        ```
+        POSTGRES_HOST=db  # Or localhost if running outside Docker for development
+        POSTGRES_PORT=5432
+        POSTGRES_USER=myuser
+        POSTGRES_PASSWORD=mypassword
+        POSTGRES_DB=ecomm_db # (Suggesting a DB name)
+        JWT_SECRET=your_very_strong_jwt_secret_key_here # For token generation/validation
+        ```
+    * The application should read these variables for database connection and JWT signing.
+
+---
+
+### **Validation and Key Functionality Checks:** ✅
+
+* **Frontend-Backend Communication:** Ensure the React frontend can successfully make API calls to the Node.js backend to perform all CRUD (Create, Read, Update, Delete) operations on products and handle user authentication.
+* **Database Interaction:** Verify that data is correctly read from and written to the PostgreSQL database for both user registration and product management.
+* **User Registration:** Confirm that a new user can register through the signup page, their information is stored in the database (with a hashed password), and they can subsequently log in.
+* **Authenticated Access:** All product management features and the products page itself must only be accessible and visible to logged-in users. The navigation menu should dynamically update based on authentication status.
+
+Please provide the complete code structure for both the frontend and backend, including clear separation of concerns, component structure for React, and API route handling in Node.js.
+
+
+
+
+
+
+
+
+
+
+Deep Research
+
+Canvas
+
