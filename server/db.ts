@@ -1,7 +1,17 @@
+import * as dotenv from 'dotenv';
+import { resolve } from 'path';
+
+// Load environment variables from .env file
+dotenv.config({ path: resolve(process.cwd(), '.env') });
+
 import { Pool, neonConfig } from '@neondatabase/serverless';
 import { drizzle } from 'drizzle-orm/neon-serverless';
 import ws from "ws";
 import * as schema from "@shared/schema";
+
+console.log('Current working directory:', process.cwd());
+console.log('Environment variables:', process.env);
+console.log('DATABASE_URL:', process.env.DATABASE_URL);
 
 neonConfig.webSocketConstructor = ws;
 
